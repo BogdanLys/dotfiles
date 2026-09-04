@@ -3,3 +3,8 @@
 -- Add any additional keymaps here
 
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
+
+vim.keymap.set("n", "<Leader>R", function()
+	vim.api.nvim_exec2("Lazy reload LuaSnip", {})
+	require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets/" })
+end, { desc = "Reload LuaSnip", silent = true })
