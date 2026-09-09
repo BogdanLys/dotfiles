@@ -5,3 +5,10 @@
 vim.opt.swapfile = false
 
 vim.opt.virtualedit = "all"
+
+vim.opt.spelllang = ""
+-- vim.opt.spell = false
+
+vim.g.vimtex_compiler_latexmk = {
+  aux_dir = ".build",
+}
