@@ -5,3 +5,11 @@ require("config.lazy")
 require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets/" })
 
 vim.g.vimtex_view_method = "zathura"
+
+require("telescope").setup({
+  defaults = {
+    file_ignore_patterns = {
+      "venv",
+    },
+  },
+})
