@@ -56,12 +56,15 @@ bindkey -M vicmd '^J' history-substring-search-down
 # Aliases are defined in ~/.config/zsh/oh-my-zsh/custom/aliases.zsh
 # Exports are defined in ~/.config/zsh/oh-my-zsh/custom/exports.zsh
 
-# turn off sounds 
-wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 0 
-wpctl set-mute @DEFAULT_AUDIO_SINK@ 1
-qs ipc call volBriIPC updateVol
 
 if [[ ! -z $MAIN_TERM ]] && [[ -z "$TMUX" ]] && [[ -z "$NVIM" ]]; then
+  
+  # turn off sounds 
+  wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 0 
+  wpctl set-mute @DEFAULT_AUDIO_SINK@ 1
+  qs ipc call volBriIPC updateVol
+
+  # setup base tmux window
   tmux attach-session -t main
 fi
 
