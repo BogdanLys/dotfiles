@@ -3,7 +3,7 @@
 export ZSH="$HOME/.config/zsh/oh-my-zsh"
 
 # ZSH_THEME="bira"
-ZSH_THEME="custom-bira"
+ZSH_THEME="bira"
 
 
 HYPHEN_INSENSITIVE="true"
@@ -30,9 +30,9 @@ KEYTIMEOUT=1
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-	vi-mode
-  zsh-syntax-highlighting
   zsh-history-substring-search
+	zsh-vi-mode
+  zsh-syntax-highlighting
 )
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 source $ZSH/oh-my-zsh.sh
@@ -55,6 +55,11 @@ bindkey -M vicmd '^J' history-substring-search-down
 
 # Aliases are defined in ~/.config/zsh/oh-my-zsh/custom/aliases.zsh
 # Exports are defined in ~/.config/zsh/oh-my-zsh/custom/exports.zsh
+
+# turn off sounds 
+wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 0 
+wpctl set-mute @DEFAULT_AUDIO_SINK@ 1
+qs ipc call volBriIPC updateVol
 
 if [[ ! -z $MAIN_TERM ]] && [[ -z "$TMUX" ]] && [[ -z "$NVIM" ]]; then
   tmux attach-session -t main
