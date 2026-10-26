@@ -37,11 +37,16 @@ plugins=(
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 source $ZSH/oh-my-zsh.sh
 
-bindkey '^K' history-substring-search-up
-bindkey '^J' history-substring-search-down
+bindkey '^[k' history-substring-search-up
+bindkey '^[j' history-substring-search-down
 
-bindkey -M vicmd '^K' history-substring-search-up
-bindkey -M vicmd '^J' history-substring-search-down
+bindkey -M vicmd '^[k' history-substring-search-up
+bindkey -M vicmd '^[j' history-substring-search-down
+
+# new clear command binding
+clear_cmd() { clear }
+zle -N clear_cmd
+bindkey -M vicmd '^[l' clear_cmd
 
 # User configuration
 
